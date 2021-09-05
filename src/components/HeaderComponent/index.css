@@ -1,0 +1,9 @@
+.Header {
+  height: 20px;
+  background-color: blue;
+  color: white;
+}
+.HeaderText{
+  font-size: 20px;
+  line-height: 2px;
+}

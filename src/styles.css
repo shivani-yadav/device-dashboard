@@ -1,0 +1,14 @@
+/* Add your CSS here. This file should */
+/* automatically hot reload into the app on save */
+
+body{
+    margin: 0px;
+}
+.instructions {
+    border: 2px solid #202936;
+    border-radius: 30px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    width: 500px;
+}
