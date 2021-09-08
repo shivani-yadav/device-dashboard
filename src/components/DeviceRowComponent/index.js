@@ -12,13 +12,13 @@ function DeviceRowComponent(props){
         {unit}
       </td>
       <td className="body-row">
-        {value}
+        {value.toFixed(2)}
       </td>
       <td className="body-row">
         {timestamp}
       </td>
       <td className="body-row">
-        {active}
+        {active.toString()}
       </td>
     </tr>
   )

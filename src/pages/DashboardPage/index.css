@@ -1,22 +1,44 @@
-.topBar{
+.top-bar{
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   border-bottom: 0.5px solid rgb(229, 231, 235);
   padding: 16px;
-  flex: 2 1 auto;
+  margin: 4px;
+  justify-content: space-between;
 }
 
-.input{
-  /* width: 50%; */
+.input-text{
+  width: 50%;
+}
+.input-text input{
+  height: 30px;
+  width: 350px;
+  border-radius: 16px;
+  padding: 4px;
+  font-size: 16px;
+}
+.input-text input:focus{
+  outline: none;
+  box-shadow: 0px 0px 2px rgb(119, 116, 116);
 }
 
-.deviceBar{
+h2{
+  font-weight: 800;
+  line-height: 1.5rem;
+}
+
+.device-bar{
   display: flex;
   flex-direction: row;
-  /* width: 50%; */
+  width: 50%;
+  justify-content: space-evenly;
 }
-
+.count{
+  font-size: 20px;
+  font-weight: 600;
+  color:rgba(55, 65, 81,1)
+}
 .device-table {
   margin: 20px;
   /* background-color: rgba(229, 231, 235, 1); */
@@ -26,11 +48,16 @@ table{
   border: 1px solid rgb(229, 231, 235);
   border-radius: 5px;
 }
+
+/* .table-head{
+  padding-bottom: 2px;
+} */
 .table-row{
   padding-left: 6px;
   padding-top: 3px;
   text-align: left;
   color: rgb(145, 154, 175);
+  font-size: 20px;
   font-weight: 500;
   text-transform: uppercase;
   
