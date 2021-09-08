@@ -3,36 +3,48 @@ import DeviceRowComponent from '../../components/DeviceRowComponent/index';
 import './index.css';
 const apiURL = 'http://localhost:8888/devices';
 
+let originalDevices;
+
 function Dashboard(){
   const [devices, setDevices] = useState([]);
-  const[activeCount, setActiveCount] = useState(0);
-  const[inactiveCount, setInactiveCount] = useState(0);
-
-  let count = 0;
+  const [activeCount, setActiveCount] = useState(0);
+  const [inactiveCount, setInactiveCount] = useState(0);
+  const [searchText, setSearchText] = useState('');
 
   async function getDevices() {
     const response = await fetch(apiURL)
     .then((response) => {
       return response.text();
-    }).then((data) => {
-      const list = JSON.parse(data).data;
-      list.forEach((item) => {
-        if(item.active){
-          count = count + 1;
-        }
-      });
+    }).then((res) => {
+      originalDevices = JSON.parse(res).data;
+      const activeCount = originalDevices.filter((item) => item.active).length
+      const totalCount = originalDevices.length;
 
-      const total = list.length;
-
-      setDevices(list);
-      setActiveCount(count);
-      setInactiveCount(total-count);
+      setDevices(originalDevices);
+      setActiveCount(activeCount);
+      setInactiveCount(totalCount - activeCount);
 
     })
     .catch((err) => {
       console.log(err);
     });
   }
+
+  const filter = (e) => {
+    const keyword = e.target.value;
+    setSearchText(keyword);
+
+    if (keyword !== '') {
+      const results = devices.filter((device) => {
+        return device.name.toLowerCase().startsWith(keyword.toLowerCase());
+        // return device;
+      });
+      console.log(results);
+      setDevices(results);
+    } else {
+      setDevices(originalDevices);
+    }
+  };
 
   useEffect(() => {
     getDevices();
@@ -42,7 +54,7 @@ function Dashboard(){
       <div>
         <div className="top-bar">
           <div className="input-text">
-            <input type="text" placeholder="Search Device Name" />
+            <input type="text" value={searchText} onChange={filter} placeholder="Search Device Name" />
           </div>
           <div className="device-bar">
             <div className="count">Active Devices: {activeCount}</div>
