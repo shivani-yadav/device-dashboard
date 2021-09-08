@@ -6,3 +6,12 @@
   line-height: 1.75rem;
   border-bottom: 0.5px solid rgb(229, 231, 235);
 }
+.status button{
+  background-color: rgba(37, 99, 2356,1);
+  color: white;
+  width: 72px;
+  height: 32px;
+  font-size: 16px;
+  border-radius: 16px;
+  /* px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 */
+} 

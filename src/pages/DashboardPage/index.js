@@ -87,7 +87,7 @@ function Dashboard(){
           <tbody className="">
             {
                devices.map(device => {
-                return <DeviceRowComponent key={device.name} device={device} />
+                return <DeviceRowComponent key={device.name} getDevices={getDevices} device={device} />
                })
             }
           </tbody>
