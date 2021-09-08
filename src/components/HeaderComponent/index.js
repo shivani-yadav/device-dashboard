@@ -4,7 +4,7 @@ import './index.css';
 function HeaderComponent(){
   return(
     <div className="Header">
-			<h2 className="HeaderText">votepoll</h2>
+			<h2 className="HeaderText">Dashboard</h2>
 		</div>
   )
 }

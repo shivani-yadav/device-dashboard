@@ -1,0 +1,38 @@
+.topBar{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-bottom: 0.5px solid rgb(229, 231, 235);
+  padding: 16px;
+  flex: 2 1 auto;
+}
+
+.input{
+  /* width: 50%; */
+}
+
+.deviceBar{
+  display: flex;
+  flex-direction: row;
+  /* width: 50%; */
+}
+
+.device-table {
+  margin: 20px;
+  /* background-color: rgba(229, 231, 235, 1); */
+}
+table{
+  width: 100%;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 5px;
+}
+.table-row{
+  padding-left: 6px;
+  padding-top: 3px;
+  text-align: left;
+  color: rgb(145, 154, 175);
+  font-weight: 500;
+  text-transform: uppercase;
+  
+  /* px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider */
+}
