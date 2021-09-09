@@ -14,6 +14,7 @@ function Dashboard(){
   async function getDevices() {
     const response = await fetch(apiURL)
     .then((response) => {
+      console.log("hhhhhhhhhh")
       return response.text();
     }).then((res) => {
       originalDevices = JSON.parse(res).data;

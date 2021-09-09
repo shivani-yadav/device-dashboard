@@ -9,6 +9,7 @@ function DeviceRowComponent(props){
   const apiURL = 'http://localhost:8888/devices';
 
   const toggleStatus = () => {
+
     const response = fetch(`${apiURL}/${name}?active=${active}`, {
       method: 'PATCH',
     }).then((res) => {
@@ -42,7 +43,8 @@ function DeviceRowComponent(props){
         <span>{formatTime}</span>
       </td>
       <td className="body-row status">
-        <button onClick={toggleStatus}>
+        
+        <button onClick={toggleStatus}   style={ active ? { backgroundColor:'blue'} : {backgroundColor : 'gray'} }>
         { 
           active ? "Active" : "Inactive" 
         }
