@@ -3,7 +3,7 @@ import DeviceRowComponent from '../../components/DeviceRowComponent/index';
 import './index.css';
 const apiURL = 'http://localhost:8888/devices';
 
-let originalDevices;
+let originalDevices = [];
 
 function Dashboard(){
   const [devices, setDevices] = useState([]);
@@ -14,7 +14,6 @@ function Dashboard(){
   async function getDevices() {
     const response = await fetch(apiURL)
     .then((response) => {
-      console.log("hhhhhhhhhh")
       return response.text();
     }).then((res) => {
       originalDevices = JSON.parse(res).data;
@@ -24,23 +23,23 @@ function Dashboard(){
       setDevices(originalDevices);
       setActiveCount(activeCount);
       setInactiveCount(totalCount - activeCount);
-
+      filterDevices();
     })
     .catch((err) => {
       console.log(err);
     });
   }
 
-  const filter = (e) => {
-    const keyword = e.target.value;
-    setSearchText(keyword);
+  const onSearch = (e) => {
+    setSearchText(e.target.value);
+  }
 
-    if (keyword !== '') {
-      const results = devices.filter((device) => {
-        return device.name.toLowerCase().startsWith(keyword.toLowerCase());
+  const filterDevices = () => {
+    if (searchText !== '') {
+      const results = originalDevices.filter((device) => {
+        return device.name.toLowerCase().startsWith(searchText.toLowerCase());
         // return device;
       });
-      console.log(results);
       setDevices(results);
     } else {
       setDevices(originalDevices);
@@ -51,11 +50,15 @@ function Dashboard(){
     getDevices();
   },[])
 
+  useEffect(() => {
+    filterDevices()
+  },[searchText])
+
   return(
       <div>
         <div className="top-bar">
           <div className="input-text">
-            <input type="text" value={searchText} onChange={filter} placeholder="Search Device Name" />
+            <input type="text" value={searchText} onChange={onSearch} placeholder="Search Device Name" />
           </div>
           <div className="device-bar">
             <div className="count">Active Devices: {activeCount}</div>

@@ -2,19 +2,16 @@ import React, { useEffect } from 'react';
 import './index.css';
 
 function DeviceRowComponent(props){
-  const {name, unit, value, timestamp, active} = props.device;
-  const { getDevices } = props.getDevices;
+  const { getDevices } = props;
+  const { name, unit, value, timestamp, active } = props.device;
 
   const formatTime = new Date(timestamp).toISOString();
   const apiURL = 'http://localhost:8888/devices';
 
   const toggleStatus = () => {
-
-    const response = fetch(`${apiURL}/${name}?active=${active}`, {
+    const activeValue = !active;
+    const response = fetch(`${apiURL}/${name}?active=${activeValue}`, {
       method: 'PATCH',
-    }).then((res) => {
-      console.log(res)
-      return res.text();
     }).then((response) => {
       if(response.status === 200){
         console.log(response);
